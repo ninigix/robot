@@ -1,11 +1,11 @@
+import { IDirection } from "../interfaces/IDirection";
+import { IPosition } from "../interfaces/IPosition";
+import { Position } from "./position";
+
 export enum TurnDirection {
   LEFT,
   RIGHT,
 }
-
-import { IDirection } from "../interfaces/IDirection";
-import { IPosition } from "../interfaces/IPosition";
-import { Position } from "./position";
 
 export class NorthDirection implements IDirection {
   getNextDirection(turnDirection: TurnDirection): IDirection {
@@ -15,7 +15,7 @@ export class NorthDirection implements IDirection {
   }
 
   getNextPosition(position: IPosition): IPosition {
-    return new Position(position.row - 1, position.column);
+    return new Position(position.row + 1, position.column);
   }
 
   name(): string {
@@ -47,7 +47,7 @@ export class SouthDirection implements IDirection {
   }
 
   getNextPosition(position: IPosition): IPosition {
-    return new Position(position.row + 1, position.column);
+    return new Position(position.row - 1, position.column);
   }
 
   name(): string {
