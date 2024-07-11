@@ -1,12 +1,17 @@
 import { IPosition } from "../interfaces/IPosition";
+import { InvalidTabletopSizeError } from "../utils/error";
 
 export class TableTop {
   private width: number;
   private height: number;
 
   constructor(width: number, height: number) {
-    this.width = width;
-    this.height = height;
+    if (width <= 0 || height <= 0) {
+      throw new InvalidTabletopSizeError("Tabletop size must be positive");
+    } else {
+      this.width = width;
+      this.height = height;
+    }
   }
 
   isValid(position: IPosition): boolean {

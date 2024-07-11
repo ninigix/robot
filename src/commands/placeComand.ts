@@ -7,17 +7,25 @@ export class PlaceCommand implements Command {
   constructor(private robot: Robot) {}
 
   execute(args: string[]): void {
-    const { x, y, facing } = this.parseArgs(args);
+    const { row, column, facing } = this.parseArgs(args);
     const direction = getDirection(facing);
 
-    if (x && y && direction) {
-      this.robot.place(new Position(x, y), direction);
+    if (row !== undefined && column !== undefined && !!direction) {
+      this.robot.place(new Position(row, column), direction);
     } else {
-      console.log("Invalid PLACE command");
+      console.log(`Invalid PLACE command ${row}, ${column}, ${direction}`);
     }
   }
 
-  private parseArgs(args: string[]): { x: number; y: number; facing: string } {
-    return { x: parseInt(args[0]), y: parseInt(args[1]), facing: args[2] };
+  private parseArgs(args: string[]): {
+    row: number;
+    column: number;
+    facing: string;
+  } {
+    return {
+      row: parseInt(args[0]),
+      column: parseInt(args[1]),
+      facing: args[2],
+    };
   }
 }

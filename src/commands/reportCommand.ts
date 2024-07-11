@@ -5,6 +5,10 @@ export class ReportCommand implements Command {
   constructor(private robot: Robot) {}
 
   execute(): void {
-    this.robot.report();
+    try {
+      this.robot.report();
+    } catch (error) {
+      console.error("Report command failed:", (error as Error).message);
+    }
   }
 }

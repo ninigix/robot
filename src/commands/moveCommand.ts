@@ -5,6 +5,10 @@ export class MoveCommand implements Command {
   constructor(private robot: Robot) {}
 
   execute(): void {
-    this.robot.move();
+    try {
+      this.robot.move();
+    } catch (error) {
+      console.error("Move command failed:", (error as Error).message);
+    }
   }
 }

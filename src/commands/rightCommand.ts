@@ -5,6 +5,10 @@ export class RightCommand implements Command {
   constructor(private robot: Robot) {}
 
   execute(): void {
-    this.robot.turnRight();
+    try {
+      this.robot.turnRight();
+    } catch (error) {
+      console.error("Turn right command failed:", (error as Error).message);
+    }
   }
 }

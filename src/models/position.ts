@@ -17,4 +17,8 @@ export class Position implements IPosition {
       this.column >= 0
     );
   }
+
+  equals(other: IPosition): boolean {
+    return this.row === other.row && this.column === other.column;
+  }
 }
