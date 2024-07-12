@@ -1,7 +1,6 @@
 import { IPosition } from "../interfaces/IPosition";
 import { IActor } from "../interfaces/IActor";
-import { IDirection } from "../interfaces/IDirection";
-import { TurnDirection } from "./direction";
+import { IDirection, TurnDirection } from "../interfaces/IDirection";
 import { TableTop } from "./tabletop";
 import {
   InvalidPlacementError,

@@ -1,5 +1,9 @@
 import { IPosition } from "./IPosition";
-import { TurnDirection } from "../models/direction";
+
+export enum TurnDirection {
+  LEFT,
+  RIGHT,
+}
 
 export interface IDirection {
   getNextDirection(turnDirection: TurnDirection): IDirection;

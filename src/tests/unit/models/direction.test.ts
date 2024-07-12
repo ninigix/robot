@@ -1,12 +1,10 @@
 import { Position } from "../../../models/position";
-import {
-  EastDirection,
-  NorthDirection,
-  SouthDirection,
-  TurnDirection,
-  WestDirection,
-} from "../../../models/direction";
-import { IDirection } from "../../../interfaces/IDirection";
+
+import { IDirection, TurnDirection } from "../../../interfaces/IDirection";
+import { NorthDirection } from "../../../models/northDirection";
+import { WestDirection } from "../../../models/westDirection";
+import { EastDirection } from "../../../models/eastDirection";
+import { SouthDirection } from "../../../models/southDirection";
 
 describe("Direction", () => {
   describe("NorthDirection", () => {

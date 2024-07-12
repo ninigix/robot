@@ -1,11 +1,10 @@
 import { getDirection } from "../../../utils/directionFactory";
-import {
-  EastDirection,
-  NorthDirection,
-  SouthDirection,
-  WestDirection,
-} from "../../../models/direction";
+
 import { InvalidDirectionError } from "../../../utils/error";
+import { NorthDirection } from "../../../models/northDirection";
+import { SouthDirection } from "../../../models/southDirection";
+import { EastDirection } from "../../../models/eastDirection";
+import { WestDirection } from "../../../models/westDirection";
 
 describe("DirectionFactory", () => {
   it("should create a NorthDirection instance", () => {
