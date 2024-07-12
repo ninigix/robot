@@ -1,12 +1,12 @@
 import { Command } from "./command";
-import { Robot } from "../models/robot";
+import { IActor } from "../interfaces/IActor";
 
 export class ReportCommand implements Command {
-  constructor(private robot: Robot) {}
+  constructor(private robot: IActor) {}
 
   execute(): void {
     try {
-      this.robot.report();
+      console.log(this.robot.report());
     } catch (error) {
       console.error("Report command failed:", (error as Error).message);
     }

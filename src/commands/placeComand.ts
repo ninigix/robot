@@ -1,10 +1,10 @@
 import { Command } from "./command";
-import { Robot } from "../models/robot";
 import { Position } from "../models/position";
 import { getDirection } from "../utils/directionFactory";
+import { IActor } from "../interfaces/IActor";
 
 export class PlaceCommand implements Command {
-  constructor(private robot: Robot) {}
+  constructor(private robot: IActor) {}
 
   execute(args: string[]): void {
     const { row, column, facing } = this.parseArgs(args);
@@ -13,7 +13,7 @@ export class PlaceCommand implements Command {
     if (row !== undefined && column !== undefined && !!direction) {
       this.robot.place(new Position(row, column), direction);
     } else {
-      console.log(`Invalid PLACE command ${row}, ${column}, ${direction}`);
+      console.error(`Invalid PLACE command ${row}, ${column}, ${direction}`);
     }
   }
 

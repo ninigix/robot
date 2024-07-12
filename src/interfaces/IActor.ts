@@ -7,5 +7,7 @@ export interface IActor {
     direction?: IDirection | undefined,
   ): void;
   move(): void;
-  report(): void;
+  report(): string;
+  turnLeft(): void;
+  turnRight(): void;
 }

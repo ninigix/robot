@@ -19,6 +19,13 @@ export class InvalidTabletopSizeError extends Error {
   }
 }
 
+export class InvalidDirectionError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "InvalidDirectionError";
+  }
+}
+
 export class RobotNotPlacedError extends Error {
   constructor(message: string) {
     super(message);

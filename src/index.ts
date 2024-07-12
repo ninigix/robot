@@ -3,8 +3,8 @@ import { Robot } from "./models/robot";
 import { TableTop } from "./models/tabletop";
 import { PlaceCommand } from "./commands/placeComand";
 import { MoveCommand } from "./commands/moveCommand";
-import { LeftCommand } from "./commands/leftCommand";
-import { RightCommand } from "./commands/rightCommand";
+import { TurnLeftCommand } from "./commands/turnLeftCommand";
+import { TurnRightCommand } from "./commands/turnRightCommand";
 import { ReportCommand } from "./commands/reportCommand";
 import { ExitCommand } from "./commands/exitCommand";
 import { Command } from "./commands/command";
@@ -15,8 +15,8 @@ const robot = new Robot(tabletop);
 const commands: { [key: string]: Command } = {
   PLACE: new PlaceCommand(robot),
   MOVE: new MoveCommand(robot),
-  LEFT: new LeftCommand(robot),
-  RIGHT: new RightCommand(robot),
+  LEFT: new TurnLeftCommand(robot),
+  RIGHT: new TurnRightCommand(robot),
   REPORT: new ReportCommand(robot),
   EXIT: new ExitCommand(),
 };

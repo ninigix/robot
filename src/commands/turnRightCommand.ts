@@ -1,8 +1,8 @@
 import { Command } from "./command";
-import { Robot } from "../models/robot";
+import { IActor } from "../interfaces/IActor";
 
-export class RightCommand implements Command {
-  constructor(private robot: Robot) {}
+export class TurnRightCommand implements Command {
+  constructor(private robot: IActor) {}
 
   execute(): void {
     try {

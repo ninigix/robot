@@ -57,13 +57,11 @@ export class Robot implements IActor {
     this.direction = this.direction?.getNextDirection(TurnDirection.RIGHT);
   }
 
-  report(): void {
+  report(): string {
     if (!this.currentPosition || !this.direction) {
-      console.log("Robot not placed");
+      return "Robot not placed";
     } else {
-      console.log(
-        `Output: ${this.currentPosition?.column}, ${this.currentPosition?.row}, ${this.direction?.name()}`,
-      );
+      return `Output: ${this.currentPosition?.column}, ${this.currentPosition?.row}, ${this.direction?.name()}`;
     }
   }
 }
