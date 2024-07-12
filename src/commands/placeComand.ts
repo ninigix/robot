@@ -23,8 +23,8 @@ export class PlaceCommand implements Command {
     facing: string;
   } {
     return {
-      row: parseInt(args[0]),
-      column: parseInt(args[1]),
+      row: parseInt(args[1]),
+      column: parseInt(args[0]),
       facing: args[2],
     };
   }
