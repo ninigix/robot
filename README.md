@@ -25,7 +25,7 @@ To embark on your journey with RoboSim, follow these magical steps:
 
 4. **Commands**
     - Command your robot with these mystical instructions:
-    - **Note**: You must place the robot before any other command.
+    - **Note**: You must place the robot before any other command. The origin (0,0) is the SOUTH WEST most corner.
         - `PLACE X,Y,F`: Place the robot on the 5x5 tabletop. X and Y must be integers between 0 and 5. F (Facing) can be one of the cardinal directions: North, East, South, or West.
         - `MOVE`: Move the robot one unit forward in the current direction.
         - `LEFT`: Rotate the robot left.
@@ -33,5 +33,10 @@ To embark on your journey with RoboSim, follow these magical steps:
         - `REPORT`: Check the current location and direction of your robot.
         - `EXIT`: Bid farewell to RoboWik and exit the CLI.
 
+5. **Test RoboWik**
+   - Want to double-check everything works? Run:
+     ```
+     docker run --rm -it robot npm test
+     ```
 
 ### 🌟 Let your magical adventure with RoboWik begin!
