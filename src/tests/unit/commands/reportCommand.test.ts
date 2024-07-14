@@ -3,7 +3,7 @@ import { IActor } from "../../../interfaces/IActor";
 import { TableTop } from "../../../models/tabletop";
 import { Position } from "../../../models/position";
 import { getDirection } from "../../../utils/directionFactory";
-import { ReportCommand } from "../../../commands/reportCommand";
+import { ReportCommand } from "../../../models/commands/reportCommand";
 
 describe("ReportCommand", () => {
   let robot: IActor;

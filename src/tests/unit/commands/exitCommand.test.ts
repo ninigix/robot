@@ -1,4 +1,4 @@
-import { ExitCommand } from "../../../commands/exitCommand";
+import { ExitCommand } from "../../../models/commands/exitCommand";
 
 describe("ExitCommand", () => {
   it("should exit the application", () => {

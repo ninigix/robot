@@ -3,7 +3,7 @@ import { IActor } from "../../../interfaces/IActor";
 import { TableTop } from "../../../models/tabletop";
 import { Position } from "../../../models/position";
 import { getDirection } from "../../../utils/directionFactory";
-import { MoveCommand } from "../../../commands/moveCommand";
+import { MoveCommand } from "../../../models/commands/moveCommand";
 
 describe("MoveCommand", () => {
   let robot: IActor;

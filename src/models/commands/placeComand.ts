@@ -1,8 +1,8 @@
-import { Command } from "./command";
-import { Position } from "../models/position";
-import { getDirection } from "../utils/directionFactory";
-import { IActor } from "../interfaces/IActor";
-import { IDirection } from "../interfaces/IDirection";
+import { Command } from "../../interfaces/command";
+import { Position } from "../position";
+import { getDirection } from "../../utils/directionFactory";
+import { IActor } from "../../interfaces/IActor";
+import { IDirection } from "../../interfaces/IDirection";
 
 export class PlaceCommand implements Command {
   constructor(private robot: IActor) {}

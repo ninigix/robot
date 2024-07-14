@@ -3,7 +3,7 @@ import { IActor } from "../../../interfaces/IActor";
 import { TableTop } from "../../../models/tabletop";
 import { Position } from "../../../models/position";
 import { getDirection } from "../../../utils/directionFactory";
-import { TurnLeftCommand } from "../../../commands/turnLeftCommand";
+import { TurnLeftCommand } from "../../../models/commands/turnLeftCommand";
 
 describe("TurnLeftCommand", () => {
   let robot: IActor;

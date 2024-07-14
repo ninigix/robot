@@ -2,13 +2,13 @@ import { TableTop } from "../../models/tabletop";
 import { IActor } from "../../interfaces/IActor";
 import { Robot } from "../../models/robot";
 import { parseInput } from "../../utils/parseInput";
-import { PlaceCommand } from "../../commands/placeComand";
-import { MoveCommand } from "../../commands/moveCommand";
-import { TurnLeftCommand } from "../../commands/turnLeftCommand";
-import { TurnRightCommand } from "../../commands/turnRightCommand";
-import { ReportCommand } from "../../commands/reportCommand";
-import { ExitCommand } from "../../commands/exitCommand";
-import { Command } from "../../commands/command";
+import { PlaceCommand } from "../../models/commands/placeComand";
+import { MoveCommand } from "../../models/commands/moveCommand";
+import { TurnLeftCommand } from "../../models/commands/turnLeftCommand";
+import { TurnRightCommand } from "../../models/commands/turnRightCommand";
+import { ReportCommand } from "../../models/commands/reportCommand";
+import { ExitCommand } from "../../models/commands/exitCommand";
+import { Command } from "../../interfaces/command";
 
 describe("Integration Tests for Robot Application", () => {
   let tabletop: TableTop;
