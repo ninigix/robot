@@ -26,13 +26,6 @@ export class InvalidDirectionError extends Error {
   }
 }
 
-export class RobotNotPlacedError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "RobotNotPlacedError";
-  }
-}
-
 export class TabletopNotSetError extends Error {
   constructor(message: string) {
     super(message);

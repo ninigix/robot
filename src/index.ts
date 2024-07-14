@@ -8,6 +8,7 @@ import { TurnRightCommand } from "./commands/turnRightCommand";
 import { ReportCommand } from "./commands/reportCommand";
 import { ExitCommand } from "./commands/exitCommand";
 import { Command } from "./commands/command";
+import { parseInput } from "./utils/parseInput";
 
 const tabletop = new TableTop(5, 5);
 const robot = new Robot(tabletop);
@@ -20,14 +21,6 @@ const commands: { [key: string]: Command } = {
   REPORT: new ReportCommand(robot),
   EXIT: new ExitCommand(),
 };
-
-function parseInput(input: string): { command: string; args: string[] } {
-  const parts = input.trim().toUpperCase().split(/\s+/);
-  const command = parts[0];
-  const args = parts[1]?.split(`,`);
-
-  return { command, args };
-}
 
 async function promptUser(): Promise<void> {
   const answer = await inquirer.prompt<{ command: string }>({

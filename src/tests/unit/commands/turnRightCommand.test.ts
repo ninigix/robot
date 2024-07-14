@@ -22,6 +22,6 @@ describe("TurnRightCommand", () => {
     const turnRightCommand = new TurnRightCommand(robot);
     turnRightCommand.execute();
 
-    expect(robot.report()).toBe("Output: 3, 3, West");
+    expect(robot.report()).toBe("Output: 3,3,WEST");
   });
 });

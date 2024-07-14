@@ -1,13 +1,13 @@
 import { IDirection } from "../interfaces/IDirection";
 
 import { InvalidDirectionError } from "./error";
-import { NorthDirection } from "../models/northDirection";
-import { SouthDirection } from "../models/southDirection";
-import { EastDirection } from "../models/eastDirection";
-import { WestDirection } from "../models/westDirection";
+import { NorthDirection } from "../models/directions/northDirection";
+import { SouthDirection } from "../models/directions/southDirection";
+import { EastDirection } from "../models/directions/eastDirection";
+import { WestDirection } from "../models/directions/westDirection";
 
 export function getDirection(facing: string): IDirection {
-  const direction = facing.trim().toUpperCase();
+  const direction = facing?.trim().toUpperCase();
 
   switch (direction) {
     case "NORTH":

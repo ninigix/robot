@@ -1,6 +1,6 @@
-import { IDirection, TurnDirection } from "../interfaces/IDirection";
-import { IPosition } from "../interfaces/IPosition";
-import { Position } from "./position";
+import { IDirection, TurnDirection } from "../../interfaces/IDirection";
+import { IPosition } from "../../interfaces/IPosition";
+import { Position } from "../position";
 import { NorthDirection } from "./northDirection";
 import { SouthDirection } from "./southDirection";
 

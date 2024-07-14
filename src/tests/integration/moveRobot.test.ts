@@ -1,75 +1,72 @@
-import { IActor } from "../../interfaces/IActor";
 import { TableTop } from "../../models/tabletop";
+import { IActor } from "../../interfaces/IActor";
 import { Robot } from "../../models/robot";
-import { getDirection } from "../../utils/directionFactory";
-import { Position } from "../../models/position";
+import { parseInput } from "../../utils/parseInput";
+import { PlaceCommand } from "../../commands/placeComand";
+import { MoveCommand } from "../../commands/moveCommand";
+import { TurnLeftCommand } from "../../commands/turnLeftCommand";
+import { TurnRightCommand } from "../../commands/turnRightCommand";
+import { ReportCommand } from "../../commands/reportCommand";
+import { ExitCommand } from "../../commands/exitCommand";
+import { Command } from "../../commands/command";
 
-describe("MoveRobot", () => {
-  let robot: IActor;
+describe("Integration Tests for Robot Application", () => {
   let tabletop: TableTop;
-  const width = 5;
-  const height = 5;
+  let robot: IActor;
+  let commands: { [key: string]: Command };
 
   beforeEach(() => {
-    tabletop = new TableTop(width, height);
+    tabletop = new TableTop(5, 5);
     robot = new Robot(tabletop);
+
+    commands = {
+      PLACE: new PlaceCommand(robot),
+      MOVE: new MoveCommand(robot),
+      LEFT: new TurnLeftCommand(robot),
+      RIGHT: new TurnRightCommand(robot),
+      REPORT: new ReportCommand(robot),
+      EXIT: new ExitCommand(),
+    };
   });
 
-  it("should move the robot within the boundaries", () => {
-    const direction = getDirection("north");
-    robot.place(new Position(1, 1), direction);
+  const runCommands = (inputs: string[]) => {
+    for (const input of inputs) {
+      const { command, args } = parseInput(input);
+      if (commands[command]) {
+        commands[command].execute(args);
+      }
+    }
+  };
 
-    robot.move();
-    expect(robot.report()).toBe("Output: 1, 2, North");
+  it("should run commands correctly", () => {
+    const commandsSequence = ["PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE"];
 
-    robot.turnLeft();
-    robot.move();
-    expect(robot.report()).toBe("Output: 0, 2, West");
+    runCommands(commandsSequence);
+    expect(robot.report()).toBe("Output: 3,3,NORTH");
   });
 
-  it("should place robot multiple times", () => {
-    robot.place(new Position(1, 1), getDirection("north"));
+  it("should ignore invalid commands", () => {
+    const commandsSequence = [
+      "PLACE 1,2,EAST",
+      "MOVE",
+      "INVALIDCOMMAND",
+      "LEFT",
+      "MOVE",
+    ];
 
-    robot.move();
-    expect(robot.report()).toBe("Output: 1, 2, North");
+    runCommands(commandsSequence);
 
-    robot.place(new Position(1, 5), getDirection("west"));
-    expect(robot.report()).toBe("Output: 5, 1, West");
-
-    robot.turnLeft();
-    robot.move();
-    expect(robot.report()).toBe("Output: 5, 0, South");
+    expect(robot.report()).toBe("Output: 2,3,NORTH");
   });
 
-  it("should ignore commands until placed on a tabletop", () => {
-    robot.move();
-    expect(robot.report()).toBe("Robot not placed");
+  it("should not place the robot out of boundaries", () => {
+    const logSpy = jest.spyOn(global.console, "error");
+    const commandsSequence = ["PLACE 6,6,NORTH", "REPORT"];
+    runCommands(commandsSequence);
 
-    robot.turnRight();
-    robot.move();
-    expect(robot.report()).toBe("Robot not placed");
-
-    robot.place(new Position(1, 1), getDirection("north"));
-    robot.move();
-    expect(robot.report()).toBe("Output: 1, 2, North");
-  });
-
-  it("should not move the robot outside the boundaries", () => {
-    robot.place(new Position(0, 0), getDirection("west"));
-
-    robot.move();
-    expect(robot.report()).toBe("Output: 0, 0, West");
-
-    robot.turnLeft();
-    robot.move();
-    expect(robot.report()).toBe("Output: 0, 0, South");
-
-    robot.place(new Position(width, height), getDirection("east"));
-    robot.move();
-    expect(robot.report()).toBe("Output: 5, 5, East");
-
-    robot.turnLeft();
-    robot.move();
-    expect(robot.report()).toBe("Output: 5, 5, North");
+    expect(logSpy).toHaveBeenCalledWith(
+      "Place command failed:",
+      "Invalid position",
+    );
   });
 });

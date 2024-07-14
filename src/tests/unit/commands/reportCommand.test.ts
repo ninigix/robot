@@ -3,9 +3,9 @@ import { IActor } from "../../../interfaces/IActor";
 import { TableTop } from "../../../models/tabletop";
 import { Position } from "../../../models/position";
 import { getDirection } from "../../../utils/directionFactory";
-import { TurnLeftCommand } from "../../../commands/turnLeftCommand";
+import { ReportCommand } from "../../../commands/reportCommand";
 
-describe("TurnLeftCommand", () => {
+describe("ReportCommand", () => {
   let robot: IActor;
   let tabletop: TableTop;
 
@@ -14,14 +14,15 @@ describe("TurnLeftCommand", () => {
     robot = new Robot(tabletop);
   });
 
-  it("should turn the robot left when placed", () => {
+  it("should report the current position", () => {
     const position = new Position(0, 0);
     const direction = getDirection("north");
     robot.place(position, direction);
 
-    const turnLeftCommand = new TurnLeftCommand(robot);
-    turnLeftCommand.execute();
+    const logSpy = jest.spyOn(global.console, "log");
+    const reportCommand = new ReportCommand(robot);
+    reportCommand.execute();
 
-    expect(robot.report()).toBe("Output: 0,0,WEST");
+    expect(logSpy).toHaveBeenCalledWith("Output: 0,0,NORTH");
   });
 });

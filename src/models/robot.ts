@@ -11,7 +11,7 @@ import {
 export class Robot implements IActor {
   private direction: IDirection | undefined;
   private currentPosition: IPosition | undefined;
-  private tableTop: TableTop | undefined;
+  private readonly tableTop: TableTop | undefined;
 
   constructor(tableTop: TableTop) {
     this.tableTop = tableTop;
@@ -58,9 +58,25 @@ export class Robot implements IActor {
 
   report(): string {
     if (!this.currentPosition || !this.direction) {
-      return "Robot not placed";
+      return this.ASCIIRobot;
     } else {
-      return `Output: ${this.currentPosition?.column}, ${this.currentPosition?.row}, ${this.direction?.name()}`;
+      return `Output: ${this.currentPosition?.column},${this.currentPosition?.row},${this.direction?.name().toUpperCase()}`;
     }
+  }
+
+  private get ASCIIRobot(): string {
+    return (
+      "    I'M LOST" +
+      "\n" +
+      "       __\n" +
+      "   _  |@@|\n" +
+      "  / \\ \\--/ __\n" +
+      "  ) O|----|  |   __\n" +
+      " / / \\ }{ /\\ )_ / _\\\n" +
+      " )/  /\\__/\\ \\__O (__\n" +
+      "|/  (--/\\--)    \\__/\n" +
+      "/   _)(  )(_\n" +
+      "   `---''---`\n"
+    );
   }
 }

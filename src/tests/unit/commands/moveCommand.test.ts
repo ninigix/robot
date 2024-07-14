@@ -22,7 +22,7 @@ describe("MoveCommand", () => {
     const moveCommand = new MoveCommand(robot);
     moveCommand.execute();
 
-    expect(robot.report()).toBe("Output: 3, 2, South");
+    expect(robot.report()).toBe("Output: 3,2,SOUTH");
   });
 
   it("should not move robot when move outside boundaries", () => {
@@ -33,6 +33,6 @@ describe("MoveCommand", () => {
     const moveCommand = new MoveCommand(robot);
     moveCommand.execute();
 
-    expect(robot.report()).toBe("Output: 0, 0, South");
+    expect(robot.report()).toBe("Output: 0,0,SOUTH");
   });
 });

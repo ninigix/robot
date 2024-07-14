@@ -23,12 +23,12 @@ describe("Robot", () => {
 
     it("should correctly turn left", () => {
       robot.turnLeft();
-      expect(robot.report()).toBe("Output: 0, 0, West");
+      expect(robot.report()).toBe("Output: 0,0,WEST");
     });
 
     it("should correctly turn right", () => {
       robot.turnRight();
-      expect(robot.report()).toBe("Output: 0, 0, East");
+      expect(robot.report()).toBe("Output: 0,0,EAST");
     });
   });
 
@@ -37,7 +37,7 @@ describe("Robot", () => {
       const direction = getDirection("north");
       robot.place(new Position(0, 0), direction!);
 
-      expect(robot.report()).toBe("Output: 0, 0, North");
+      expect(robot.report()).toBe("Output: 0,0,NORTH");
     });
   });
 
@@ -51,7 +51,7 @@ describe("Robot", () => {
       robot.turnLeft();
       robot.move();
 
-      expect(robot.report()).toBe("Output: 3, 3, North");
+      expect(robot.report()).toBe("Output: 3,3,NORTH");
     });
   });
 });
