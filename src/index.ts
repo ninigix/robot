@@ -1,13 +1,13 @@
 import inquirer from "inquirer";
 import { Robot } from "./models/robot";
 import { TableTop } from "./models/tabletop";
-import { PlaceCommand } from "./commands/placeComand";
-import { MoveCommand } from "./commands/moveCommand";
-import { TurnLeftCommand } from "./commands/turnLeftCommand";
-import { TurnRightCommand } from "./commands/turnRightCommand";
-import { ReportCommand } from "./commands/reportCommand";
-import { ExitCommand } from "./commands/exitCommand";
-import { Command } from "./commands/command";
+import { PlaceCommand } from "./models/commands/placeComand";
+import { MoveCommand } from "./models/commands/moveCommand";
+import { TurnLeftCommand } from "./models/commands/turnLeftCommand";
+import { TurnRightCommand } from "./models/commands/turnRightCommand";
+import { ReportCommand } from "./models/commands/reportCommand";
+import { ExitCommand } from "./models/commands/exitCommand";
+import { Command } from "./interfaces/command";
 import { parseInput } from "./utils/parseInput";
 
 const tabletop = new TableTop(5, 5);

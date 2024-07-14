@@ -1,4 +1,4 @@
-import { Command } from "./command";
+import { Command } from "../../interfaces/command";
 
 export class ExitCommand implements Command {
   execute(): void {

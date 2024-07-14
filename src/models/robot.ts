@@ -40,6 +40,7 @@ export class Robot implements IActor {
   move(): void {
     if (this.currentPosition) {
       const newPosition = this.direction?.getNextPosition(this.currentPosition);
+
       if (newPosition && this.tableTop?.isValid(newPosition)) {
         this.currentPosition = newPosition;
       } else {

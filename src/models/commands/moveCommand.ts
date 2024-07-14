@@ -1,5 +1,5 @@
-import { Command } from "./command";
-import { IActor } from "../interfaces/IActor";
+import { Command } from "../../interfaces/command";
+import { IActor } from "../../interfaces/IActor";
 
 export class MoveCommand implements Command {
   constructor(private robot: IActor) {}

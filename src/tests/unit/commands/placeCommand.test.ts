@@ -1,7 +1,7 @@
 import { Robot } from "../../../models/robot";
 import { IActor } from "../../../interfaces/IActor";
 import { TableTop } from "../../../models/tabletop";
-import { PlaceCommand } from "../../../commands/placeComand";
+import { PlaceCommand } from "../../../models/commands/placeComand";
 
 describe("PlaceCommand", () => {
   let robot: IActor;
